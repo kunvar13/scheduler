@@ -8,7 +8,6 @@ import "components/Appointment";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay } from "helpers/selectors";
 import { getInterview } from "helpers/selectors";
-import { renderHook, act } from "@testing-library/react-hooks";
 import useVisualMode from "hooks/useVisualMode";
 //import getAppointmentsForDay from "helpers/selectors";
 
