@@ -5,7 +5,6 @@ import {useState} from "react";
 
 export default function Form (props) {
 
-  console.log("I am Form props", props);
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
 

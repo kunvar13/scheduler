@@ -6,9 +6,6 @@ import Empty from "./Empty";
 
 export default function Appointment(props) {
 
-  console.log("I am Appointment props", props);
-
-
   return (
 
     <article className="appointment">
