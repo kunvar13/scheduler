@@ -44,7 +44,7 @@ export default function Application(props) {
     .then(res => {
           console.log(res)
           setState(prev => ({ ...prev, appointments}
-        ));
+        ))
     })
     )
   }
@@ -65,8 +65,7 @@ export default function Application(props) {
       axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(res => {
             console.log(res)
-            setState(prev => ({ ...prev, appointments}
-          ));
+            setState(prev => ({ ...prev, appointments}))
       })
       )
   }
