@@ -10,6 +10,7 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 
 export default function Appointment(props) {
+  //console.log("Appointment props", props);
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -20,6 +21,7 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
   
+  //Setting initial value for mode
   const { mode, transition, back } = useVisualMode(
       props.interview ? SHOW : EMPTY
      );
@@ -39,7 +41,8 @@ export default function Appointment(props) {
 
     function deleteAppointment() {
 
-      transition(DELETE, true);
+      //Adding true to replace the mode with transition
+      transition(DELETE, true); 
       props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch(() => transition(ERROR_DELETE, true))
@@ -48,6 +51,8 @@ export default function Appointment(props) {
   return (
 
     <article className="appointment">
+      {/*Adding modes as the values in appointment  */}
+
       <Header time={props.time} />
         {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
         {mode === SHOW && (
