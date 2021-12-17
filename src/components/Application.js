@@ -8,7 +8,6 @@ import "components/Appointment";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay } from "helpers/selectors";
 import { getInterview } from "helpers/selectors";
-import useVisualMode from "hooks/useVisualMode";
 //import getAppointmentsForDay from "helpers/selectors";
 
 export default function Application(props) {
@@ -16,7 +15,6 @@ export default function Application(props) {
   const [state, setState] = useState({day: "Monday", days:[], appointments:{}, interviewers:{}})
 
   const setDay = day => setState(prev => ({ ...prev, day }));
-  //const setAppointments = appointments =>setState(prev => ({...prev, appointments}))
 
   useEffect(() => {
   Promise.all([
