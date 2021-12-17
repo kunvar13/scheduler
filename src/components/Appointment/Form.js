@@ -5,8 +5,6 @@ import {useState} from "react";
 
 export default function Form (props) {
 
-  console.log("Iam form prop", props);
-
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
@@ -20,6 +18,7 @@ export default function Form (props) {
     reset();
     props.onCancel();
   }
+
 
   return (
 
@@ -35,24 +34,20 @@ export default function Form (props) {
               onChange={(event) => {
                 setStudent(event.target.value)
               }}
-              /*
-                This must be a controlled component
-                your code goes here
-              */
+
             />
           </form>
           <InterviewerList 
-            interviewers={props.interviewers} onChange= {setInterviewer} value={interviewer} 
+            interviewers={props.interviewers} onChange= {setInterviewer} value={interviewer}  
           />
         </section>
         <section className="appointment__card-right">
           <section className="appointment__actions">
             <Button danger onClick={cancel}>Cancel</Button>
-            <Button confirm onClick ={props.onSave}>Save</Button>
+            <Button confirm onClick ={() => props.onSave(student, interviewer)}>Save</Button>
           </section>
         </section>
     </main>
-
 
   );
 }

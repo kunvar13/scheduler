@@ -1,23 +1,13 @@
 
 function getAppointmentsForDay(states, day) {
 
-  //console.log("I am selector argument", states, day)
-
-
-  const appointmentsDays = states.days.filter(findDay => findDay.name===day)
-  //console.log("I am stat and day appo", appointmentsDays);
-
-  if(appointmentsDays.length === 0) {
-
+  const dayFound = states.days.find(findDay => findDay.name===day)
+  
+  if(dayFound === undefined || states.days.length === 0 ) {
     return [];
-
   }
-  const appointments1=appointmentsDays[0];
- // console.log("I am appointments1", appointments1);
-  const arr = appointments1.appointments
-  //console.log("Appointments ", arr);
 
-  return arr.map((appointment) => states.appointments[appointment] );
+  return dayFound.appointments.map((appointment) => states.appointments[appointment] );
 
 }
 
@@ -45,7 +35,17 @@ function getInterview(states, interviewer) {
 
   }
 
-
 }
 
-export {getAppointmentsForDay, getInterview};
+  function getInterviewersForDay(states, day) {
+  
+    const dayFound = states.days.find(findDay => findDay.name===day)
+    
+    if(dayFound === undefined || states.days.length === 0 ) {
+      return [];
+    }
+    return dayFound.interviewers.map((interviewer) => states.interviewers[interviewer] );
+  
+  }
+
+export {getAppointmentsForDay, getInterview, getInterviewersForDay};
