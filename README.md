@@ -34,3 +34,10 @@ npm run test:server
 ```
 
 # Scrennshots
+!["Appointment Form "](https://github.com/kunvar13/scheduler/blob/master/docs/Appointment-Form.png?raw=true)
+
+!["Appointment Added"](https://github.com/kunvar13/scheduler/blob/master/docs/Appointment-Added.png?raw=true)
+
+!["Appointment Edit"](https://github.com/kunvar13/scheduler/blob/master/docs/Appointment-Edit.png?raw=true)
+
+!["Appointment Delete"](https://github.com/kunvar13/scheduler/blob/master/docs/Appointment-Delete.png?raw=true)
