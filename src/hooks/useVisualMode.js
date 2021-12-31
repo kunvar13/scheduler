@@ -19,7 +19,7 @@ export default function useVisualMode(initial) {
     } if (!replace){
       newHistory = [...history,next]
       //console.log("no replace", newHistory)
-    setHistory(newHistory)
+    setHistory([...newHistory])
     setMode(next);
     return { transition };
     }
