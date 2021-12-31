@@ -4,19 +4,24 @@ export default function useVisualMode(initial) {
 
   const[mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
+  //console.log("history", history);
+  let newHistory = [...history];
 
   function transition(next, replace) {
     if (replace) {
-
-      const newHistoryWithReplace = [...history.slice(0,-1), next]
-      console.log("newHistoryWithReplace", newHistoryWithReplace)
-      setHistory(newHistoryWithReplace);
-      setMode(next);
+      newHistory.pop();
+      newHistory.push(next);
+      //console.log("replace",newHistory);
+      setHistory([...newHistory]);
+      setMode(newHistory[newHistory.length - 1])
+      return {transition};
 
     } if (!replace){
-    const newHistoryNoReplace = [...history,next]
-    setHistory(newHistoryNoReplace)
+      newHistory = [...history,next]
+      //console.log("no replace", newHistory)
+    setHistory(newHistory)
     setMode(next);
+    return { transition };
     }
   }
   
@@ -25,14 +30,13 @@ export default function useVisualMode(initial) {
 
       return;
     }
-    const historyBack = history.splice(history.length-1);
-    setHistory(history);
-    const newMode = history[history.length-1];
-    console.log("newMode", newMode)
-    setMode(newMode);
+    const historyBack = [...history];
+    historyBack.pop();
+    //console.log("historyBack", historyBack);
+    setHistory([...historyBack]);
+    setMode(historyBack[historyBack.length-1]);
+    return { back };
   }
-
-
   return {mode, transition, back};
   
-}
+};
